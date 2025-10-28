@@ -141,9 +141,31 @@ int fatorBalanceamento(NO* no) {
 }
 
 NO* girarDireita(NO* y) {  
-   /* Rotação simples à direita  
+   
+    NO* x = y->esq;
+    /*NO* T2 = x->dir;*/
+
+    /*y->esq = T2;*/
+    
+    y->esq = x->dir;
+    raiz = x;
+
+    x->dir = y;
+
+
+    alturaNo(x);
+    alturaNo(y);
+
+    return raiz = x;
+
+    /*y->altura = maior(alturaNo(y->esq), alturaNo(y->dir) + 1);
+    x->altura = maior(alturaNo(x->esq), alturaNo(x->dir) + 1);*/
+    
+    
+    
+    /* Rotação simples à direita  
              y                x  
-            / \              / \  
+            / \              / \   
            x   T3   =>      T1  y  
           / \                  / \  
         T1  T2               T2  T3  
@@ -160,6 +182,22 @@ NO* girarDireita(NO* y) {
 }  
 
 NO* girarEsquerda(NO* x) {  
+
+    NO* y = x->dir;
+    NO* T2 = y->esq;
+
+    y->esq = x;
+    x->dir = T2;
+
+    x->altura = maior(alturaNo(x->esq), alturaNo(x->dir) + 1);
+    y->altura = maior(alturaNo(y->esq), alturaNo(y->dir) + 1);
+   
+
+
+
+
+
+
    /* Rotação simples à esquerda  
            x                    y  
           / \                  / \  
